@@ -1,8 +1,24 @@
 
 body {
-  background-color: #c188c9;
+  background-image: url('img/imagenFondo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
 }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(193, 136, 201, 0.6); 
+  z-index: -1;
+}
+
 .navbar {
+  position: sticky;
   background-color: #38023f57;
 }
 .navbar-brand {
@@ -10,12 +26,43 @@ body {
   font-weight: bold;
   font-size: 1.4rem;
 }
+.navbar-nav .nav-link {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f78fb3; 
+  transform: translateY(-2px);
+}
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f368e0;
+  transition: width 0.3s;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
 .section-inicio{
   display: flex;
   align-items: center;
   justify-content: center;
 
 }
+
+.navbar-nav .nav-link.active {
+  color: #f368e0 !important;
+  font-weight: bold;
+  border-bottom: 2px solid #f368e0;
+}
+
+
 
 
 #formTarea input {
@@ -51,3 +98,78 @@ footer {
   margin-top: auto;
 }
 
+.btn-rosado {
+  background-color: #f78fb3;
+  color: white;
+  border: none;
+}
+
+.btn-rosado:hover {
+  background-color: #f368e0;
+}
+
+.btn-lila {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+}
+
+.btn-lila:hover {
+  background-color: #5a4bcf;
+}
+
+.tarea {
+  background-color: #f896fc; 
+  border-left: 5px solid #c084fc; 
+  transition: background-color 0.3s, color 0.3s;
+}
+.listaTareas {
+  background-color: #f896fc; 
+  border-left: 5px solid #c084fc; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.tarea-completada {
+  background-color: #d1ffd6 !important; 
+  text-decoration: line-through;
+  color: #555;
+}
+
+
+.form-check-input:checked {
+  background-color: #6c5ce7;
+  border-color: #6c5ce7;
+}
+
+.custom-checkbox {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  border: 2px solid #6c5ce7;
+}
+
+.custom-checkbox:checked {
+  background-color: #6c5ce7;
+  border-color: #6c5ce7;
+}
+
+.seccion-activa {
+  animation: resaltarSeccion 0.4s ease;
+  box-shadow: 0 0 20px rgba(243, 104, 224, 0.3);
+  border-radius: 10px;
+  transition: all box-shadow 0.3s ease;
+}
+
+@keyframes resaltarSeccion {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.5;
+    
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(49, 18, 45, 0.3);
+  }
+}
